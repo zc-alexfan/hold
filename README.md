@@ -9,7 +9,7 @@
 
 ## Overview
 
-This is a repository for HOLD, a method that jointly reconstructs hands and objects from monocular videos without assuming a pre-scanned template. 
+This is a repository for HOLD, a method that jointly reconstructs hands and objects from monocular videos without assuming a pre-scanned object template. 
 
 <p align="center">
     <img src="./docs/static/teaser.jpeg" alt="Image" width="100%"/>

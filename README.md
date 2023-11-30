@@ -5,7 +5,7 @@
     <img src="docs/static/logo.png" alt="Image" width="300" height="100%" />
 </p>
 
-[ [Video](https://www.youtube.com/watch?v=bvMm8gfFbZ8) ]
+[ [Video](https://download.is.tue.mpg.de/hold/video.mp4) ]
 
 ## Overview
 

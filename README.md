@@ -10,33 +10,34 @@
 [ [ArXiV](https://arxiv.org/abs/2311.18448) ]
 [ [Video](https://download.is.tue.mpg.de/hold/video.mp4) ]
 
+## Overview
+
 This is a repository for HOLD, a method that jointly reconstructs hands and objects from monocular videos without assuming a pre-scanned template. 
 
-<figure style="text-align: center;">
-    <img src="./docs/static/teaser.jpeg" alt="Image" style="width: 100%;"/>
-    <figcaption>Figure 1: HOLD can jointly reconstruct hands and novel objects from monocular videos.</figcaption>
-</figure>
+<p align="center">
+    <img src="./docs/static/teaser.jpeg" alt="Image" width="80%"/>
+</p>
 
 
-HOLD can reconstruct detailed geometries of novel objects and hands:
+HOLD can reconstruct 3D geometries of novel objects and hands:
 
-<figure style="text-align: center;">
-    <img src="./docs/static/360/mug_ours.gif" alt="Image" style="width: 50%;"/>
-    <figcaption>Figure 2: Our results</figcaption>
-</figure>
+<p align="center">
+    <img src="./docs/static/360/mug_ours.gif" alt="Image" width="50%"/>
+</p>
 
-<figure style="text-align: center;">
-    <img src="./docs/static/360/mug_ref.png" alt="Image" style="width: 50%;"/>
-    <figcaption>Figure 3: Reference image</figcaption>
-</figure>
+<p align="center">
+    <img src="./docs/static/360/mug_ref.png" alt="Image" width="50%"/>
+</p>
 
 
->**Abstract**: Since humans interact with diverse objects every day, the holistic 3D capture of these interactions is important to understand and model human behaviour. However, most existing methods for hand-object reconstruction from RGB either assume pre-scanned object templates or heavily rely on limited 3D hand-object data, restricting their ability to scale and generalize to more unconstrained interaction settings. To this end, we introduce HOLD -- the first category-agnostic method that reconstructs an articulated hand and object jointly from a monocular interaction video. We develop a compositional articulated implicit model that can reconstruct disentangled 3D hand and object from 2D images. We also further incorporate hand-object constraints to improve hand-object poses and consequently the reconstruction quality. Our method does not rely on 3D hand-object annotations while outperforming fully-supervised baselines in both in-the-lab and challenging in-the-wild settings. Moreover, we qualitatively show its robustness in reconstructing from in-the-wild videos. 
+## Abstract 
 
+Since humans interact with diverse objects every day, the holistic 3D capture of these interactions is important to understand and model human behaviour. However, most existing methods for hand-object reconstruction from RGB either assume pre-scanned object templates or heavily rely on limited 3D hand-object data, restricting their ability to scale and generalize to more unconstrained interaction settings. To this end, we introduce HOLD -- the first category-agnostic method that reconstructs an articulated hand and object jointly from a monocular interaction video. We develop a compositional articulated implicit model that can reconstruct disentangled 3D hand and object from 2D images. We also further incorporate hand-object constraints to improve hand-object poses and consequently the reconstruction quality. Our method does not rely on 3D hand-object annotations while outperforming fully-supervised baselines in both in-the-lab and challenging in-the-wild settings. Moreover, we qualitatively show its robustness in reconstructing from in-the-wild videos. 
 
 ## More results
 
 > See more results on our [project page](https://zc-alexfan.github.io/hold)! 
+
 
 
 ```bibtex

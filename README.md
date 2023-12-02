@@ -1,5 +1,5 @@
 
-## HOLD ✍️: Category-agnostic 3D Reconstruction of Interacting Hands and Objects from Video
+## HOLD: Category-agnostic 3D Reconstruction of Interacting Hands and Objects from Video
 
 <p align="center">
     <img src="docs/static/logo.png" alt="Image" width="300" height="100%" />

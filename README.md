@@ -12,7 +12,7 @@
 
 ## Overview
 
-This is a repository for HOLD, a method that jointly reconstructs hands and objects from monocular videos without assuming a pre-scanned template. 
+This is a repository for HOLD, a method that jointly reconstructs hands and objects from monocular videos without assuming a pre-scanned object template. 
 
 <p align="center">
     <img src="./docs/static/teaser.jpeg" alt="Image" width="80%"/>
@@ -41,10 +41,10 @@ Since humans interact with diverse objects every day, the holistic 3D capture of
 
 
 ```bibtex
-@article{fan2023hold,
+@article{fan2024hold,
   title={{HOLD}: Category-agnostic 3D Reconstruction of Interacting Hands and Objects from Video},
   author={Fan, Zicong and Parelli, Maria and Kadoglou, Maria Eleni and Kocabas, Muhammed and Chen, Xu and Black, Michael J. and Hilliges, Otmar},
   journal={arXiv preprint},
-  year={2023}
+  year={2024}
 }
 ```

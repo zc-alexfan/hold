@@ -41,11 +41,11 @@ Since humans interact with diverse objects every day, the holistic 3D capture of
 
 
 ```bibtex
-@article{fan2023hold,
+@article{fan2024hold,
   title={{HOLD}: Category-agnostic 3D Reconstruction of Interacting Hands and Objects from Video},
   author={Fan, Zicong and Parelli, Maria and Kadoglou, Maria Eleni and Kocabas, Muhammed and Chen, Xu and Black, Michael J and Hilliges, Otmar},
-  journal={arXiv preprint arXiv:2311.18448},
-  year={2023}
+  booktitle = {Proceedings IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year = {2024}
 }
 ```
 

@@ -10,6 +10,10 @@
 [ [ArXiV](https://arxiv.org/abs/2311.18448) ]
 [ [Video](https://download.is.tue.mpg.de/hold/video.mp4) ]
 
+## News
+
+- 2024.02.27: HOLD is accepted to CVPR'24! Working on code release!
+
 ## Overview
 
 This is a repository for HOLD, a method that jointly reconstructs hands and objects from monocular videos without assuming a pre-scanned object template. 

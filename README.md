@@ -36,9 +36,16 @@ HOLD can reconstruct 3D geometries of novel objects and hands:
     <img src="./docs/static/360/mug_ref.png" alt="Image" width="50%"/>
 </p>
 
+Reconstructing long-tailed shapes:
 
 <p align="center">
     <img src="docs/static/ananas1_itw.png" alt="Image" width="100%"  />
+</p>
+
+Two hand interaction with objects: 
+
+<p align="center">
+    <img src="docs/static/sushi.gif" alt="Image" width="100%"  />
 </p>
 
 ## Abstract 

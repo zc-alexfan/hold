@@ -29,11 +29,7 @@ This is a repository for HOLD, a method that jointly reconstructs hands and obje
 HOLD can reconstruct 3D geometries of novel objects and hands:
 
 <p align="center">
-    <img src="./docs/static/360/mug_ours.gif" alt="Image" width="50%"/>
-</p>
-
-<p align="center">
-    <img src="./docs/static/360/mug_ref.png" alt="Image" width="50%"/>
+    <img src="./docs/static/mug.gif" alt="Image" width="100%"/>
 </p>
 
 Reconstructing long-tailed shapes:

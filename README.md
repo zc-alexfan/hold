@@ -7,7 +7,7 @@
 
 [ [Project Page](https://zc-alexfan.github.io/hold) ]
 [ [Paper](https://download.is.tue.mpg.de/hold/paper.pdf) ]
-[ [ArXiV](https://arxiv.org/abs/2311.18448) ]
+[ [ArXiv](https://arxiv.org/abs/2311.18448) ]
 [ [Video](https://download.is.tue.mpg.de/hold/video.mp4) ]
 
 ## News

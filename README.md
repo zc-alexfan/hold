@@ -98,7 +98,9 @@ cd hold; git submodule update --init --recursive
 
 ### Contact
 
-For technical questions, please create an issue. For other questions, please contact the first author.
+For technical questions, please create an issue. For other questions, please contact the [first author](https://zc-alexfan.github.io/).
+
+For commercial licensing, please contact ps-licensing@tue.mpg.de.
 
 ### Acknowledgments
 

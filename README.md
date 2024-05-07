@@ -11,8 +11,7 @@
 [ [Video](https://youtu.be/xm6WSkr2sIs) ]
 [ [HOLD Account](https://hold.is.tue.mpg.de/) ]
 
-Authors: [Zicong Fan](https://zc-alexfan.github.io/), [Maria Parelli](https://scholar.google.com/citations?user=ipSS2ToAAAAJ&hl=en), [Maria Eleni Kadoglou](https://ch.linkedin.com/in/marialena-kadoglou-337a10226), [Muhammed Kocabas](https://ps.is.mpg.de/person/mkocabas), [Xu Chen](https://xuchen-ethz.github.io/), [Michael J. Black](https://ps.is.mpg.de/person/black), [Otmar Hilliges](https://ait.ethz.ch/people/hilliges)
-
+[Zicong Fan](https://zc-alexfan.github.io/), [Maria Parelli](https://scholar.google.com/citations?user=ipSS2ToAAAAJ&hl=en), [Maria Eleni Kadoglou](https://ch.linkedin.com/in/marialena-kadoglou-337a10226), [Muhammed Kocabas](https://ps.is.mpg.de/person/mkocabas), [Xu Chen](https://xuchen-ethz.github.io/), [Michael J. Black](https://ps.is.mpg.de/person/black), [Otmar Hilliges](https://ait.ethz.ch/people/hilliges)
 
 ### News
 
@@ -21,10 +20,6 @@ Authors: [Zicong Fan](https://zc-alexfan.github.io/), [Maria Parelli](https://sc
 - 2024.04.04: HOLD is awarded CVPR highlight!
 - 2024.02.27: HOLD is accepted to CVPR'24! Working on code release!
 
-<p align="center">
-    <img src="./docs/static/teaser.jpeg" alt="Image" width="80%"/>
-</p>
-
 ### Overview
 
 This is a repository for HOLD, a method that jointly reconstructs hands and objects from monocular videos without assuming a pre-scanned object template. 
@@ -32,7 +27,6 @@ This is a repository for HOLD, a method that jointly reconstructs hands and obje
 <p align="center">
     <img src="./docs/static/teaser.jpeg" alt="Image" width="80%"/>
 </p>
-
 
 HOLD can reconstruct 3D geometries of novel objects and hands:
 

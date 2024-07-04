@@ -19,7 +19,7 @@
 
 🚀 Register a HOLD account [here](https://hold.is.tue.mpg.de/register.php) for news such as code release, downloads, and future updates!
 
-- 2024.07.04: Join our ECCV challenge: Two hand + rigid object using HOLD on ARCTIC! Registartion has opened [here](https://hands-workshop.org/challenge2024.html)!
+- 2024.07.04: Join our [ECCV competition](https://hands-workshop.org/challenge2024.html): Two hand + rigid object using HOLD on ARCTIC!
 - 2024.07.04: HOLD beta is released!
 - 2024.04.04: HOLD is awarded CVPR highlight!
 - 2024.02.27: HOLD is accepted to CVPR'24! Working on code release!

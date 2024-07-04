@@ -1,0 +1,21 @@
+[submodule "generator/--force"]
+	path = generator/--force
+	url = https://github.com/microsoft/MeshTransformer.git
+[submodule "Hierarchical-Localization"]
+	path = Hierarchical-Localization
+	url = https://github.com/zc-alexfan/Hierarchical-Localization.git
+[submodule "generator/Hierarchical-Localization"]
+	path = generator/Hierarchical-Localization
+	url = https://github.com/zc-alexfan/Hierarchical-Localization.git
+[submodule "generator/hand_detector.d2"]
+	path = generator/hand_detector.d2
+	url = https://github.com/zc-alexfan/hand_detector.d2.git
+[submodule "generator/Segment-and-Track-Anything"]
+	path = generator/Segment-and-Track-Anything
+	url = https://github.com/zc-alexfan/Segment-and-Track-Anything.git
+[submodule "generator/MeshTransformer"]
+	path = generator/MeshTransformer
+	url = https://github.com/zc-alexfan/MeshTransformer.git
+[submodule "generator/hamer"]
+	path = generator/hamer
+	url = https://github.com/zc-alexfan/hamer.git

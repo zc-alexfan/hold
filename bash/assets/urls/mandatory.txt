@@ -1,0 +1,4 @@
+https://download.is.tue.mpg.de/download.php?domain=hold&sfile=mandatory/5c09be8ac.zip
+https://download.is.tue.mpg.de/download.php?domain=hold&sfile=mandatory/75268d864.zip
+https://download.is.tue.mpg.de/download.php?domain=hold&sfile=mandatory/contact_zones.pkl
+https://download.is.tue.mpg.de/download.php?domain=hold&sfile=mandatory/sealed_vertices_sem_idx.npy

@@ -1,0 +1,96 @@
+model:
+  implicit_network:
+    feature_vector_size: 256
+    d_in: 3
+    d_out: 1
+    dims:
+    - 256
+    - 256
+    - 256
+    - 256
+    - 256
+    - 256
+    - 256
+    - 256
+    init: geometry
+    bias: 0.6
+    skip_in:
+    - 4
+    weight_norm: true
+    multires: 6
+    cond: pose
+  rendering_network:
+    feature_vector_size: 256
+    mode: pose
+    d_in: 14
+    d_out: 3
+    dims:
+    - 256
+    - 256
+    - 256
+    - 256
+    weight_norm: true
+    multires_view: -1
+  bg_implicit_network:
+    feature_vector_size: 256
+    d_in: 4
+    d_out: 1
+    dims:
+    - 256
+    - 256
+    - 256
+    - 256
+    - 256
+    - 256
+    - 256
+    - 256
+    init: none
+    bias: 0.0
+    skip_in:
+    - 4
+    weight_norm: false
+    multires: 10
+    cond: frame
+    dim_frame_encoding: 32
+  bg_rendering_network:
+    feature_vector_size: 256
+    mode: nerf_frame_encoding
+    d_in: 3
+    d_out: 3
+    dims:
+    - 128
+    weight_norm: false
+    multires_view: 4
+    dim_frame_encoding: 32
+  density:
+    params_init:
+      beta: 0.1
+    beta_min: 0.0001
+  ray_sampler:
+    near: 0.0
+    N_samples: 64
+    N_samples_eval: 128
+    N_samples_extra: 32
+    eps: 0.1
+    beta_iters: 10
+    max_total_iters: 5
+    N_samples_inverse_sphere: 32
+    add_tiny: 1.0e-06
+dataset:
+  train:
+    type: train
+    batch_size: 5
+    drop_last: false
+    shuffle: true
+  valid:
+    type: val
+    batch_size: 1
+    drop_last: false
+    shuffle: false
+    pixel_per_batch: 512
+  test:
+    type: test
+    batch_size: 1
+    drop_last: false
+    shuffle: false
+    pixel_per_batch: 512

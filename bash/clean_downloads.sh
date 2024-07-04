@@ -1,0 +1,1 @@
+find downloads unpack -delete # clear dry run data

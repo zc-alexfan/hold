@@ -1,0 +1,27 @@
+optim_configs:
+  hand_optim:
+    lr: 0.01
+    decay_every: 1000
+    decay_factor: 0.5
+    num_iters: 4000
+  object_optim:
+    lr: 0.01
+    decay_every: 2000
+    decay_factor: 0.5
+    num_iters: 15000
+  hand_object_optim:
+    lr: 0.001
+    decay_every: 1000
+    decay_factor: 0.5
+    num_iters: 3000
+weights:
+  obj_scale: 0.001
+  # hand-only
+  j2d: 1.0
+  j2d_sigma: 25.0
+  # object-only
+  o2d_sigma: 25.0
+  contact: 100.0
+    #o2d: 1.0
+  o2d: 1.0
+  z_min: 1000.0

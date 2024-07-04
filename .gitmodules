@@ -1,6 +1,3 @@
-[submodule "generator/Hierarchical-Localization"]
-	path = generator/Hierarchical-Localization
-	url = https://github.com/zc-alexfan/Hierarchical-Localization.git
 [submodule "generator/hand_detector.d2"]
 	path = generator/hand_detector.d2
 	url = https://github.com/zc-alexfan/hand_detector.d2.git
@@ -13,3 +10,6 @@
 [submodule "generator/hamer"]
 	path = generator/hamer
 	url = https://github.com/zc-alexfan/hamer.git
+[submodule "generator/Hierarchical-Localization"]
+	path = generator/Hierarchical-Localization
+	url = https://github.com/zc-alexfan/Hierarchical-Localization.git

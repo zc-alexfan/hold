@@ -1,7 +1,4 @@
-
 ## [CVPR'24 Highlight] HOLD: Category-agnostic 3D Reconstruction of Interacting Hands and Objects from Video
-
-
 
 <p align="center">
     <img src="docs/static/logo.png" alt="Image" width="300" height="100%" />
@@ -10,16 +7,17 @@
 [ [Project Page](https://zc-alexfan.github.io/hold) ]
 [ [Paper](https://download.is.tue.mpg.de/hold/paper.pdf) ]
 [ [ArXiv](https://arxiv.org/abs/2311.18448) ]
-[ [Video](https://download.is.tue.mpg.de/hold/video.mp4) ]
+[ [Video](https://youtu.be/xm6WSkr2sIs) ]
 [ [HOLD Account](https://hold.is.tue.mpg.de/) ]
 
-Authors: [Zicong Fan](https://zc-alexfan.github.io/), [Maria Parelli](https://scholar.google.com/citations?user=ipSS2ToAAAAJ&hl=en), [Maria Eleni Kadoglou](https://ch.linkedin.com/in/marialena-kadoglou-337a10226), [Muhammed Kocabas](https://ps.is.mpg.de/person/mkocabas), [Xu Chen](https://xuchen-ethz.github.io/), [Michael J. Black](https://ps.is.mpg.de/person/black), [Otmar Hilliges](https://ait.ethz.ch/people/hilliges)
+[Zicong Fan](https://zc-alexfan.github.io/), [Maria Parelli](https://scholar.google.com/citations?user=ipSS2ToAAAAJ&hl=en), [Maria Eleni Kadoglou](https://ch.linkedin.com/in/marialena-kadoglou-337a10226), [Muhammed Kocabas](https://ps.is.mpg.de/person/mkocabas), [Xu Chen](https://xuchen-ethz.github.io/), [Michael J. Black](https://ps.is.mpg.de/person/black), [Otmar Hilliges](https://ait.ethz.ch/people/hilliges)
 
 
 ### News
 
 🚀 Register a HOLD account [here](https://hold.is.tue.mpg.de/register.php) for news such as code release, downloads, and future updates!
 
+- 2024.07.04: HOLD beta is released!
 - 2024.04.04: HOLD is awarded CVPR highlight!
 - 2024.02.27: HOLD is accepted to CVPR'24! Working on code release!
 
@@ -56,6 +54,11 @@ HOLD can reconstruct 3D geometries of novel objects and hands:
 - A viewer to interact with the prediction
 - Code to evaluate and compare with HOLD in HO3D
 
+### TODOs
+
+- [ ] Clean the code further
+- [ ] Support arctic for two-hand + rigid object setting
+
 ### Getting started
 
 Get a copy of the code:
@@ -89,7 +92,9 @@ cd hold; git submodule update --init --recursive
 
 ### Contact
 
-For technical questions, please create an issue. For other questions, please contact the first author.
+For technical questions, please create an issue. For other questions, please contact the [first author](https://zc-alexfan.github.io/).
+
+For commercial licensing, please contact ps-licensing@tue.mpg.de.
 
 ### Acknowledgments
 

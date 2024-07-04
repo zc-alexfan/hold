@@ -1,9 +1,3 @@
-[submodule "generator/--force"]
-	path = generator/--force
-	url = https://github.com/microsoft/MeshTransformer.git
-[submodule "Hierarchical-Localization"]
-	path = Hierarchical-Localization
-	url = https://github.com/zc-alexfan/Hierarchical-Localization.git
 [submodule "generator/Hierarchical-Localization"]
 	path = generator/Hierarchical-Localization
 	url = https://github.com/zc-alexfan/Hierarchical-Localization.git

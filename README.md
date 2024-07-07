@@ -34,19 +34,10 @@ This is a repository for HOLD, a method that jointly reconstructs hands and obje
 HOLD can reconstruct 3D geometries of novel objects and hands:
 
 <p align="center">
-    <img src="./docs/static/360/mug_ours.gif" alt="Image" width="50%"/>
+    <img src="./docs/static/360/mug_ours.gif" alt="Image" width="80%"/>
+    <img src="./docs/static/sushi.gif" alt="Image" width="80%"/>
 </p>
 
-<p align="center">
-    <img src="./docs/static/360/mug_ref.png" alt="Image" width="50%"/>
-</p>
-
-> ✨CVPR 2023: ARCTIC is a dataset that includes accurate body/hand/object poses, multi-view RGB videos for articulated object manipulation. See our [project page](https://github.com/zc-alexfan/arctic) for details.
->
-> <p align="center">
->     <img src="./docs/static/dexterous.gif" alt="ARCTIC demo" width="500"/> <!-- Adjust width as needed -->
-> </p>
->
 
 ### Features
 
@@ -88,6 +79,14 @@ cd hold; git submodule update --init --recursive
   year = {2024}
 }
 ```
+
+> ✨CVPR 2023: ARCTIC is a dataset that includes accurate body/hand/object poses, multi-view RGB videos for articulated object manipulation. See our [project page](https://github.com/zc-alexfan/arctic) for details.
+>
+> <p align="center">
+>     <img src="./docs/static/dexterous.gif" alt="ARCTIC demo" width="500"/> <!-- Adjust width as needed -->
+> </p>
+>
+
 
 ### Star History
 

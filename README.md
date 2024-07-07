@@ -38,6 +38,11 @@ HOLD can reconstruct 3D geometries of novel objects and hands:
     <img src="./docs/static/sushi.gif" alt="Image" width="80%"/>
 </p>
 
+### Potential directions from HOLD
+
+- [Template-free bimanual hand-object reconstruction](https://hands-workshop.org/challenge2024.html#challenge2)
+- [Textureless object interaction with hands](https://github.com/zju3dv/DetectorFreeSfM)
+- [Multiple objects interaction with hands](https://www.projectaria.com/datasets/hot3d/)
 
 ### Features
 

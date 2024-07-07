@@ -1,7 +1,7 @@
 ## [CVPR'24 Highlight] HOLD: Category-agnostic 3D Reconstruction of Interacting Hands and Objects from Video
 
 <p align="center">
-    <img src="logo.png" alt="Image" width="300" height="100%" />
+    <img src="./docs/static/logo.png" alt="Image" width="300" height="100%" />
 </p>
 
 [ [Project Page](https://zc-alexfan.github.io/hold) ]
@@ -35,7 +35,7 @@ HOLD can reconstruct 3D geometries of novel objects and hands:
 
 <p align="center">
     <img src="./docs/static/360/mug_ours.gif" alt="Image" width="80%"/>
-    <img src="./docs/static/sushi.gif" alt="Image" width="80%"/>
+    <img src="./docs/static/ananas1_itw.jpg" alt="Image" width="80%"/>
 </p>
 
 ### Potential directions from HOLD
@@ -43,6 +43,10 @@ HOLD can reconstruct 3D geometries of novel objects and hands:
 - [Template-free bimanual hand-object reconstruction](https://hands-workshop.org/challenge2024.html#challenge2)
 - [Textureless object interaction with hands](https://github.com/zju3dv/DetectorFreeSfM)
 - [Multiple objects interaction with hands](https://www.projectaria.com/datasets/hot3d/)
+
+<p align="center">
+<img src="./docs/static/sushi.gif" alt="Image" width="80%"/>
+</p>
 
 ### Features
 

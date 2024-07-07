@@ -72,11 +72,12 @@ cd hold; git submodule update --init --recursive
 ### Official Citation 
 
 ```bibtex
-@article{fan2024hold,
-  title={{HOLD}: Category-agnostic 3D Reconstruction of Interacting Hands and Objects from Video},
+@inproceedings{fan2024hold,
+  title={{HOLD}: Category-agnostic 3d reconstruction of interacting hands and objects from video},
   author={Fan, Zicong and Parelli, Maria and Kadoglou, Maria Eleni and Kocabas, Muhammed and Chen, Xu and Black, Michael J and Hilliges, Otmar},
-  booktitle = {Proceedings IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
-  year = {2024}
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={494--504},
+  year={2024}
 }
 ```
 

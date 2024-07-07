@@ -1,7 +1,7 @@
 ## [CVPR'24 Highlight] HOLD: Category-agnostic 3D Reconstruction of Interacting Hands and Objects from Video
 
 <p align="center">
-    <img src="docs/static/logo.png" alt="Image" width="300" height="100%" />
+    <img src="logo.png" alt="Image" width="300" height="100%" />
 </p>
 
 [ [Project Page](https://zc-alexfan.github.io/hold) ]

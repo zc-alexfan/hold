@@ -107,8 +107,6 @@ cd hold; git submodule update --init --recursive
 
 For technical questions, please create an issue. For other questions, please contact the [first author](https://zc-alexfan.github.io/).
 
-For commercial licensing, please contact ps-licensing@tue.mpg.de.
-
 ### Acknowledgments
 
 The authors would like to thank: [Benjamin Pellkofer](https://ps.is.mpg.de/person/bpellkofer) for IT/web support; [Chen Guo](https://ait.ethz.ch/people/cheguo), [Egor Zakharov](https://ait.ethz.ch/people/egorzakharov), [Yao Feng](https://ps.is.mpg.de/person/yfeng), [Artur Grigorev](https://ait.ethz.ch/people/agrigorev) for insightful discussion; [Yufei Ye](https://judyye.github.io/) for DiffHOI code release. 

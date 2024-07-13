@@ -36,11 +36,11 @@ def load_data(full_seq_name):
     ).item()
     fnames = sorted(glob(f"./arctic_data/arctic/images/{sid}/{seq_name}/{view_idx}/*"))
 
-    v3d_r = torch.FloatTensor(data["cam_coord"]["verts.right"][:, 3])
-    v3d_l = torch.FloatTensor(data["cam_coord"]["verts.left"][:, 3])
-    v3d_o = torch.FloatTensor(data["cam_coord"]["verts.object"][:, 3])
-    j3d_r = torch.FloatTensor(data["cam_coord"]["joints.right"][:, 3])
-    j3d_l = torch.FloatTensor(data["cam_coord"]["joints.left"][:, 3])
+    v3d_r = torch.FloatTensor(data["cam_coord"]["verts.right"][:, view_idx])
+    v3d_l = torch.FloatTensor(data["cam_coord"]["verts.left"][:, view_idx])
+    v3d_o = torch.FloatTensor(data["cam_coord"]["verts.object"][:, view_idx])
+    j3d_r = torch.FloatTensor(data["cam_coord"]["joints.right"][:, view_idx])
+    j3d_l = torch.FloatTensor(data["cam_coord"]["joints.left"][:, view_idx])
     K = torch.FloatTensor(np.array(misc[sid]["intris_mat"]))[view_idx - 1]
     ioi_offset = misc[sid]["ioi_offset"]
     faces_r = data["faces"]["right"]

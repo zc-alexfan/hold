@@ -6,15 +6,11 @@ Since we naturally interact with both hands, we host the bimanual category-agnos
 
 To benchmark this challenge, we adapt HOLD to two-hand manipulation settings and use 9 videos from ARCTIC dataset's rigid object collection, one per object (excluding small objects such as scissors and phone), and sourced from the test set for this challenge. Here we provide instructions to reproduce our HOLD baseline, and to produce data to upload to our evaluation server for test set evaluation.
 
-For more details on our challenge, see our workshop website [here](https://hands-workshop.org/challenge2024.html#challenge2).
-
-> IMPORTANT: If you are participating in our HANDS2024 challenge, make sure that you've signed up the form on the workshop website to join our mailing list. All important information will be communicated through this mailing list.
+> IMPORTANT⚠️: If you are participating in our HANDS2024 challenge, make sure that you've signed up the form on the workshop website to join our mailing list. All important information will be communicated through this mailing list.
 
 ## Training using our preprocessed sequences
 
-Here we have preprocessed ARCTIC sequences for you to get started. You can download the ARCTIC clips and pre-trained HOLD models with this command:
-
-Download ARCTIC clips and HOLD checkpoints:
+Here we have preprocessed ARCTIC clips for you to get started. You can download the ARCTIC clips and pre-trained HOLD models with this command:
 
 ```bash
 ./bash/arctic_downloads.sh
@@ -43,11 +39,11 @@ pyhold optimize_ckpt.py --write_gif --batch_size 51 --iters 600  --ckpt_p logs/$
 pyhold train.py --case $seq_name --num_epoch 200 --load_pose logs/$exp_id/checkpoints/last.pose_ref --shape_init 75268d864 # this yield another exp_id
 ```
 
-See more details on [usage](docs/usage.md).
+See more details on [usage](usage.md).
 
 ## Training using your own preprocessing method
 
-[Here](docs/custom_arctic.md) we show an example of how preprocessing was done. We observed that in general, the higher accuracy of preprocessed hand and object poses are, the better reconstruction quality HOLD has. Therefore, you are encouraged to have your own preprocessing method so long as you use the same set of images from the previous step. You can also follow this to preprocess any custom sequences that are not in the test set (for example, in case you need more examples for publications).
+[Here](custom_arctic.md) we show an example of how preprocessing was done. We observed that in general, the higher accuracy of preprocessed hand and object poses are, the better reconstruction quality HOLD has. Therefore, you are encouraged to have your own preprocessing method so long as you use the same set of images from the previous step. You can also follow this to preprocess any custom sequences that are not in the test set (for example, in case you need more examples for publications).
 
 ## Evaluation on ARCTIC
 
@@ -113,7 +109,8 @@ As an example, this shows to evaluate on subject 5 with sequence name `box_grab_
 
 ```python
 test_seqs = [
-    'arctic_s05_box_grab_01_1'
+    'arctic_s05_box_grab_01_1', 
+    'arctic_s05_waffleiron_grab_01_1', 
 ]
 ```
 
@@ -122,4 +119,3 @@ Run the evaluate with:
 ```bash
 python evaluate_on_arctic.py --zip_p ./arctic_preds.zip --output results
 ```
-

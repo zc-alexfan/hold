@@ -78,8 +78,7 @@ cd hold; git submodule update --init --recursive
 - Training, evaluation, and visualization on preprocessed sequences: see [`docs/usage.md`](docs/usage.md)
 - Preprocess custom sequences: see [`docs/custom.md`](docs/custom.md)
 - Data documentation: see [`docs/data_doc.md`](docs/data_doc.md)
-- Instructions for using HOLD on ARCTIC: see [`docs`]
-
+- Instructions for using HOLD on ARCTIC and HANDS2024 competition: see [`docs/arctic.md`](docs/arctic.md) (in progress!!)
 
 ### Official Citation 
 

@@ -4,12 +4,12 @@ import zipfile
 import tempfile
 import torch
 import os
+import argparse
 import os.path as op
 from tqdm import tqdm
 import sys
-
-sys.path = [".", ".."] + sys.path
-import src.utils.io.gt_arctic as gt
+sys.path = [".", '..'] + sys.path
+import src.utils.gt_arctic as gt
 import src.utils.eval_modules_arctic as eval_m
 
 eval_fn_dict = {
@@ -22,12 +22,12 @@ eval_fn_dict = {
 }
 
 
-def eval_seq(pred_p):
+def eval_seq(pred_p, output_dir):
     print("Evaluating: ", pred_p)
     data_pred = torch.load(pred_p).to_std_precision()
     data_gt = gt.load_data(data_pred["full_seq_name"])
     seq_name = data_pred["full_seq_name"]
-    out_p = f"./arctic_results/{seq_name}"
+    out_p = op.join(output_dir, seq_name)
     os.makedirs(out_p, exist_ok=True)
     eval_fn_dict["icp"] = eval_m.eval_icp_first_frame_arctic
 
@@ -72,7 +72,7 @@ def eval_seq(pred_p):
     mean_metrics["timestamp"] = time_str
     mean_metrics["seq_name"] = seq_name
     print("Units: CD (cm), F-score (percentage), MPJPE (mm)")
-
+    
     with open(json_path, "w") as f:
         json.dump(mean_metrics, f, indent=4)
         print(f"Saved mean metrics to {json_path}")
@@ -81,13 +81,14 @@ def eval_seq(pred_p):
     np.save(npy_path, metric_dict)
     print(f"Saved metric_all numpy array to {npy_path}")
 
-
 # sequences to evaluate
-test_seqs = ["arctic_s03_espressomachine_grab_01_1", "arctic_s03_ketchup_grab_01_1"]
+test_seqs = [
+    'arctic_s05_box_grab_01_1'
+]
 
 
-def main():
-    input_zip_p = "./arctic_preds.zip"
+def main(args):
+    input_zip_p = args.zip_p
     # Create a temporary directory
     with tempfile.TemporaryDirectory() as tmp_dir:
         # Extract the zip file to the temporary directory
@@ -103,20 +104,19 @@ def main():
 
         # Call the function and print the list of file paths
         pred_ps = file_paths
-        pred_seqs = [op.basename(pred_p).replace(".pt", "") for pred_p in pred_ps]
-        assert set(pred_seqs) == set(
-            test_seqs
-        ), "Mismatch between test sequences and predictions."
+        pred_seqs = [op.basename(pred_p).replace('.pt', '') for pred_p in pred_ps]
+        assert set(pred_seqs) == set(test_seqs), "Mismatch between test sequences and predictions."
         for idx, pred_p in enumerate(pred_ps):
             print("[%d/%d]" % (idx + 1, len(pred_ps)))
-            eval_seq(pred_p)
-
+            eval_seq(pred_p, args.output)
+        
         results = []
         for seq_name in test_seqs:
-            with open(f"./arctic_results/{seq_name}.metric.json", "r") as f:
+            #with open(f"./arctic_results/{seq_name}.metric.json", "r") as f:
+            with open(op.join(args.output, f"{seq_name}.metric.json"), "r") as f:
                 metric_dict = json.load(f)
             results.append(metric_dict)
-
+            
         # average results
         avg_results = {}
         for key in results[0].keys():
@@ -128,12 +128,29 @@ def main():
                 avg_results[key] = np.mean([result[key] for result in results])
         print("Average results:")
         print(avg_results)
-
+            
         # write
-        with open(f"./avg_results.json", "w") as f:
+        with open(op.join(args.output, "avg_results.json"), "w") as f:
             json.dump(avg_results, f, indent=4)
         print(f"Saved average results to avg_results.json")
 
 
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--zip_p",
+        type=str,
+        default=None,
+        help="Path to the zip file containing the predictions.",
+    )
+    parser.add_argument(
+        "--output",
+        type=str,
+        default=None,
+        help="Path to the output directory.",
+    )
+    return parser.parse_args()
+
 if __name__ == "__main__":
-    main()
+    args = parse_args()
+    main(args)

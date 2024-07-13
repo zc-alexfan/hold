@@ -1,159 +1,125 @@
+# ARCTIC benchmark using HOLD (WIP!!!)
 
-## Preprocessing for ARCTIC benchmark
+Humans interact with various objects daily, making holistic 3D capture of these interactions crucial for modeling human behavior. Most methods for reconstructing hand-object interactions require pre-scanned 3D object templates, which are impractical in real-world scenarios. Recently, HOLD (Fan et al. CVPR'24) has shown promise in category-agnostic hand-object reconstruction but is limited to single-hand interaction.
 
-This document gives instructions to preprocess an ARCTIC video sequences for the HOLD baseline. It mainly serves as a guideline. You may modify it for better ARCTIC two-hand reconstruction. 
+Since we naturally interact with both hands, we host the bimanual category-agnostic reconstruction task where participants must reconstruct both hands and the object in 3D from a video clip, without relying on pre-scanned templates. This task is more challenging as bimanual manipulation exhibits severe hand-object occlusion and dynamic hand-object contact, leaving rooms for future development.
 
-> ⚠️ We require several dependencies to create a custom sequence. See the [setup page](setup.md) for details before moving on from here. 
+To benchmark this challenge, we adapt HOLD to two-hand manipulation settings and use 9 videos from ARCTIC dataset's rigid object collection, one per object (excluding small objects such as scissors and phone), and sourced from the test set for this challenge. Here we provide instructions to reproduce our HOLD baseline, and to produce data to upload to our evaluation server for test set evaluation.
 
-### Pipeline overview
+For more details on our challenge, see our workshop website [here](https://hands-workshop.org/challenge2024.html#challenge2).
 
-Overall, the preprocessing pipeline is as follows:
+> IMPORTANT: If you are participating in our HANDS2024 challenge, make sure that you've signed up the form on the workshop website to join our mailing list. All important information will be communicated through this mailing list.
 
-0. Create dataset
-1. Image segmentation
-2. Hand pose estimation
-3. Object pose estimation
-4. Hand-object alignment
-5. Build dataset
+## Training using our preprocessed sequences
 
-This is the same for single-hand and two-hand cases. This preprocessing pipeline yields different artifacts. The created files and folders are explained in the [data documentation page](data_doc.md).
+Here we have preprocessed ARCTIC sequences for you to get started. You can download the ARCTIC clips and pre-trained HOLD models with this command:
 
-### Create dataset
-
-Given a new sequence called `hold_grape_0404`, we first create a folder for it, copy it to the folder, and parse its frames:
+Download ARCTIC clips and HOLD checkpoints:
 
 ```bash
-cdroot
-seq_name=hold_grape_0404
-mkdir -p ./data/$seq_name
-cp my/video/path/video.mp4 ./data/$seq_name/video.mp4
+./bash/arctic_downloads.sh
+python scripts/unzip_download.py
+mkdir -p code/logs
+mkdir -p code/data
+
+mv unpack/arctic_ckpts/* code/logs/
+mv unpack/arctic_data/* code/data/
+cd code
 ```
 
-Extract images from video: 
+This should put the pre-trained HOLD models under `./code/logs` and the ARCTIC clips using `./code/data`.
 
-```
-python scripts/init_dataset.py --video_path ./data/$seq_name/video.mp4 --skip_every 2 # extract every 2 frames
-```
-
-The option `--skip_every` allows you to downsample frames if the video is too long.
-
-### Segmentation
-
-The goal of this step is to extract hand and object masks for the input video. In particular, we use SAM-Track by first selecting the entity of interest in the first video frame. Then SAM-Track will annotate the rest of the video.
-
-
-Launch SAM-track server to label segmentation for starting frame:
+To visualize pre-trained checkpoints (for example, our baseline run `5c224a94e`), you can use our visualization script:
 
 ```bash
-cdroot; cd Segment-and-Track-Anything
-pysam app.py
+python visualize_ckpt.py --ckpt_p logs/5c224a94e/checkpoints/last.ckpt --ours
 ```
 
-Label the object:
-
-- Open the server page.
-- Click `Image-Seq type input`
-- Upload the zip version of `./data/$seq_name/images`
-- Click `extract`
-- Select `Click` and `Positive` to label the object.
-- Select `Click` and `Negative` to label region to avoid. 
-- Click `Start Tracking`
-- After the tracking is complete, you can copy the files under `./generator/Segment-and-Track-Anything/tracking_results/images/*` to the desination path (see below).
-
-The destination path has been created when you parsed the video:
+To train HOLD on an ARCTIC sequence, following HOLD's full pipeline (pre-train, pose refinement, fully-train), you can use the following:
 
 ```bash
-./data/$seq_name/processed/sam/object
+pyhold train.py --case $seq_name --num_epoch 100 --shape_init 75268d864 # this yield exp_id 
+pyhold optimize_ckpt.py --write_gif --batch_size 51 --iters 600  --ckpt_p logs/$exp_id/checkpoints/last.ckpt
+pyhold train.py --case $seq_name --num_epoch 200 --load_pose logs/$exp_id/checkpoints/last.pose_ref --shape_init 75268d864 # this yield another exp_id
 ```
 
-After copying the segmentation files, we expect file structure like this:
+See more details on [usage](docs/usage.md).
+
+## Training using your own preprocessing method
+
+[Here](docs/custom_arctic.md) we show an example of how preprocessing was done. We observed that in general, the higher accuracy of preprocessed hand and object poses are, the better reconstruction quality HOLD has. Therefore, you are encouraged to have your own preprocessing method so long as you use the same set of images from the previous step. You can also follow this to preprocess any custom sequences that are not in the test set (for example, in case you need more examples for publications).
+
+## Evaluation on ARCTIC
+
+### Online evaluation (ARCTIC test set)
+
+Since ARCTIC test set is hidden, you cannot find subject 3 ground-truth annotations here. To evaluate on subject 3, you can submit `arctic_preds.zip` to our [evaluation server](https://arctic-leaderboard.is.tuebingen.mpg.de/) following the submission instructions below. 
+
+Then you can export the prediction for each experiment (indicated by `exp_id`) via:
 
 ```bash
-➜  cd ./data/$seq_name/processed/sam/object; ls
-images_masks
+pyhold scripts_arctic/extract_preds.py --sd_p logs/$exp_id/checkpoints/last.ckpt
 ```
 
-Now we repeat the same process to label the hand(s) and save results to the corresponding folder. After you have all masks, the command below will merge them and create object-only images:
+This will dump the prediction of the model for the experiment `exp_id` under `./arctic_preds`. To submit to our online server, you must extract predictions for all sequences.
+
+For example, here we extract all predictions of the baseline checkpoints:
 
 ```bash
-cdroot; pyhold scripts/validate_masks.py --seq_name $seq_name
+pyhold scripts_arctic/extract_preds.py --sd_p logs/5c224a94e/checkpoints/last.ckpt
+pyhold scripts_arctic/extract_preds.py --sd_p logs/f44e4bf8f/checkpoints/last.ckpt
+pyhold scripts_arctic/extract_preds.py --sd_p logs/09c728594/checkpoints/last.ckpt
+pyhold scripts_arctic/extract_preds.py --sd_p logs/0cc49e42c/checkpoints/last.ckpt
+pyhold scripts_arctic/extract_preds.py --sd_p logs/8239a3dcb/checkpoints/last.ckpt
+pyhold scripts_arctic/extract_preds.py --sd_p logs/a961b659b/checkpoints/last.ckpt
+pyhold scripts_arctic/extract_preds.py --sd_p logs/4052f966a/checkpoints/last.ckpt
+pyhold scripts_arctic/extract_preds.py --sd_p logs/cf4b38269/checkpoints/last.ckpt
+pyhold scripts_arctic/extract_preds.py --sd_p logs/1c1fe8646/checkpoints/last.ckpt
 ```
 
-### Hand pose estimation
-
-Since HAMER has hand detection, we can directly estimate 3D left and right hand poses. Run the commands below to estimate hand meshes and register MANO to them:
+Finally, package the predictions:
 
 ```bash
-cdroot; cd hamer
-pyhamer demo.py --seq_name $seq_name --batch_size=2  --full_frame --body_detector regnety
+zip -r arctic_preds.zip arctic_preds
 ```
 
-Register MANO model to predicted meshes: 
+Submit this zip file to our [leaderboard](https://arctic-leaderboard.is.tuebingen.mpg.de/leaderboard) for online evaluation. 
+
+### Offline evaluation on non-test-set seqs
+
+Suppose that you want to evaluate offline on sequences that are not in the test set. For example, you may need more sequence evaluation for a paper or you may want to analyze your method quantitatively in details. In that case, you need to prepare ARCTIC groundtruth for your sequence of interest. 
+
+First, download the ARCTIC dataset following instructions [here](https://github.com/zc-alexfan/arctic). Place the arctic data with this folder structure:
 
 ```bash
-cdroot
-pyhold scripts/register_mano.py --seq_name $seq_name --save_mesh #--hand_type right  --use_beta_loss
+./ # code folder
+./arctic_data/arctic/images
+./arctic_data/arctic/meta
+./arctic_data/arctic/raw_seqs
+./arctic_data/models/smplx/SMPLX_FEMALE.npz
+./arctic_data/models/smplx/SMPLX_NEUTRAL.npz
+./arctic_data/models/smplx/SMPLX_MALE.npz
 ```
 
-Note: If your video has only 1 hand, you can use ``--hand_type right` or `--hand_type left` to register the corresponding hand; If not specified, this option will default to registering left and right hands. The rest of the code will behave differently based on the number of hand types registered in this step. The flag `--use_beta_loss` encourages the hand shape to be near zero and often has faster convergence.
-
-After registeration, run this to linearly interpolate missing frames:
+Suppose that you want to evaluate on `s05/box_grab_01`, you can prepare the groundtruth file via:
 
 ```bash
-pyhold scripts/validate_hamer.py --seq_name $seq_name
+python scripts_arctic/process_arctic.py --mano_p arctic_data/arctic/raw_seqs/s05/box_grab_01.mano.npy
 ```
 
-### Object pose estimation
+Modify the sequence to evaluate on in `evaluate_on_arctic.py`:
 
-Run HLoc to obtain object pose and point cloud:
+As an example, this shows to evaluate on subject 5 with sequence name `box_grab_01` for the view `1`:
 
-```bash
-cdroot; pycolmap scripts/colmap_estimation.py --num_pairs 40 --seq_name $seq_name
+```python
+test_seqs = [
+    'arctic_s05_box_grab_01_1'
+]
 ```
 
-### Hand-object alignment
-
-Since HLoc (SfM) reconstructs object up to a scale, we need to estimate the object scale and align the hand and object in the same space through a fitting process below. Using HLoc intrinsics, we fit the hands such that their 2D projection is consistent with the new intrinsics `--mode h`; We freeze the hand and find the object scale and translations to encourage hand-object contact `--mode o`; Now that object is to scale, we jointly optimize both `--mode ho`.
+Run the evaluate with: 
 
 ```bash
-cdroot
-pyhold scripts/align_hands_object.py --seq_name $seq_name --colmap_k --mode h  --is_arctic --config confs/arctic.yaml
-pyhold scripts/align_hands_object.py --seq_name $seq_name --colmap_k --mode o  --is_arctic --config confs/arctic.yaml
-pyhold scripts/align_hands_object.py --seq_name $seq_name --colmap_k --mode ho  --is_arctic --config confs/arctic.yaml
-```
-
-You can visualize the results at each stage with our custom viewer to debug any fitting issue:
-
-```bash
-cdroot
-pyait scripts/visualize_fits.py --seq_name $seq_name
-```
-
-In our CVPR experiments, we use the same loss weights for all sequences, but you can adjust the fitting weights here (`confs/generic.yaml`) if your sequence does not work out of the box.
-
-Warning⚠️: This visualization is usually the final step for quality assurance. Ideally, you will expect perfect object point cloud 2D reprojection, a reasonable scale of the object point cloud in side view, hand location is roughly near the object. If they all look good, it is good to build the dataset for training.
-
-### Build dataset
-
-Finally, we have all the artifacts needed. We can compile them into a dataset: 
-
-```bash
-cdroot; pyhold scripts/build_dataset.py --seq_name $seq_name --no_fixed_shift --rebuild
-```
-
-This "compilation" creates a "build" of the dataset under `./data/$seq_name/build/`. Files within "build" is all you need for HOLD to train. It also packs all needed data into a zip file, which you can transfer to your remote cluster to train HOLD on.
-
----
-
-(Skip if evaluated online): However, if you wish to evaluate locally for other subjects, you need to first convert raw ARCTIC annotations to meshes and joints via the following script. It will save the processed meshes under `./arctic_data/processed/`:
-
-```bash
-pyhold scripts_arctic/process_arctic.py
-```
-
-and evaluate:
-
-```bash
-python scripts_arctic/evaluate_arctic.py 
+python evaluate_on_arctic.py --zip_p ./arctic_preds.zip --output results
 ```
 

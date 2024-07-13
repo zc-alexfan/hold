@@ -16,8 +16,8 @@ def download_data(url_file, out_folder):
         flag = "SMPLX"
     elif "mano" in url_file:
         flag = "MANO"
-    elif "arctic" in url_file:
-        flag = "ARCTIC"
+    #elif "arctic" in url_file:
+        #flag = "ARCTIC"
     else:
         flag = "HOLD"
 

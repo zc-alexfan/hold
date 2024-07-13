@@ -143,40 +143,12 @@ cdroot; pyhold scripts/build_dataset.py --seq_name $seq_name --no_fixed_shift --
 
 This "compilation" creates a "build" of the dataset under `./data/$seq_name/build/`. Files within "build" is all you need for HOLD to train. It also packs all needed data into a zip file, which you can transfer to your remote cluster to train HOLD on.
 
-## Train on ARCTIC
-
-Train on ARCTIC sequence with name `seq_name`:
-
-```bash
-pyhold train.py --case $seq_name --num_epoch 100 --shape_init 5c09be8ac # this yield exp_id 
-pyhold optimize_ckpt.py --write_gif --batch_size 51 --iters 300  --ckpt_p logs/$exp_id/checkpoints/last.ckpt
-pyhold train.py --case $seq_name --num_epoch 200 --load_pose logs/$exp_id/checkpoints/last.pose_ref --shape_init 5c09be8ac # this yield another exp_id
-```
-
-See more details on [usage](docs/usage.md).
-
-## Evaluation on ARCTIC
-
-Since ARCTIC test set is hidden, you cannot find subject 3 ground-truth annotations here. To evaluate on subject 3, you can submit `arctic_preds.zip` to our [evaluation server](https://arctic-leaderboard.is.tuebingen.mpg.de/) following the submission instructions below. 
+---
 
 (Skip if evaluated online): However, if you wish to evaluate locally for other subjects, you need to first convert raw ARCTIC annotations to meshes and joints via the following script. It will save the processed meshes under `./arctic_data/processed/`:
 
 ```bash
 pyhold scripts_arctic/process_arctic.py
-```
-
-Then you can export the prediction for each experiment (indicated by `exp_id`) via:
-
-```bash
-pyhold scripts_arctic/export_arctic.py --sd_p logs/$exp_id/checkpoints/last.ckpt
-```
-
-This will dump the prediction of the model for the experiment `exp_id` under `./arctic_preds`. 
-
-Finally, package the predictions:
-
-```bash
-zip -r arctic_preds.zip arctic_preds
 ```
 
 and evaluate:

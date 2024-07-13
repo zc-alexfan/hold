@@ -6,6 +6,7 @@
 
 [ [Project Page](https://zc-alexfan.github.io/hold) ]
 [ [Paper](https://download.is.tue.mpg.de/hold/paper.pdf) ]
+[ [SupMat](https://openaccess.thecvf.com/content/CVPR2024/supplemental/Fan_HOLD_Category-agnostic_3D_CVPR_2024_supplemental.pdf) ]
 [ [ArXiv](https://arxiv.org/abs/2311.18448) ]
 [ [Video](https://youtu.be/xm6WSkr2sIs) ]
 [ [HOLD Account](https://hold.is.tue.mpg.de/) ]

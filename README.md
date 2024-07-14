@@ -71,7 +71,7 @@ HOLD can reconstruct 3D geometries of novel objects and hands:
 - Setup environment and downloads: see [`docs/setup.md`](docs/setup.md)
 - Training, evaluation, and visualization on preprocessed sequences: see [`docs/usage.md`](docs/usage.md)
 - Preprocess custom sequences: see [`docs/custom.md`](docs/custom.md)
-- Data documentation: see [`docs/data_doc.md`](docs/data_doc.md)
+- Data documentation (checkpoints, dataset, log folder): see [`docs/data_doc.md`](docs/data_doc.md)
 - Instructions for using HOLD on ARCTIC: see [`docs/arctic.md`](docs/arctic.md) (in progress!!)
 
 ### Getting started

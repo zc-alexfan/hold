@@ -1,5 +1,31 @@
 # Data documentation
 
+## Experiment folders under `./logs`
+
+Each run is saved under an experiment id (for example, here it is `56c1a54d2`):
+
+```bash
+56c1a54d2: Experiment ID
+56c1a54d2/args.json: Commit, branch information of the code
+56c1a54d2/misc: Information needed for pose refinement and visualize_ckpt.py
+56c1a54d2/mesh_cano: Hand and object templates in the canonical space
+56c1a54d2/checkpoints: Checkpoints containing model weights and pose parameters for hands and objects
+56c1a54d2/visuals: visualizations
+56c1a54d2/visuals/right.normal: Right hand normal rendering
+56c1a54d2/visuals/rgb: RGB rendering
+56c1a54d2/visuals/right.mask_prob: Right hand mask rendering
+56c1a54d2/visuals/object.mask_prob: Object mask rendering
+56c1a54d2/visuals/object.fg_rgb.vis: Object RGB rendering without the background
+56c1a54d2/visuals/imap: Instance segmentation rendering
+56c1a54d2/visuals/mask_prob: Foreground mask rendering
+56c1a54d2/visuals/normal: Foreground normal rendering
+56c1a54d2/visuals/fg_rgb.vis: Foreground RGB rendering
+56c1a54d2/visuals/right.fg_rgb.vis: Right hand rendering without background
+56c1a54d2/visuals/bg_rgb: Background-only rendering
+56c1a54d2/visuals/object.normal: object normal rendering
+56c1a54d2/train.log: loguru outputts
+```
+
 ## Sequence folder
 
 - `./data/$seq_name/`: folder to stored artifacts and built dataset for a sequence named `$seq_name`
@@ -60,5 +86,42 @@ The below shows the documentation of `./data/$seq_name/build/data.npy`:
 - `entities/object/norm_mat`: 4x4; normalization matrix to center and scale COLMAP point cloud to the canonical space
 - `entities/object/object_poses`: Tx6; first three global rotation in axis-angle, last three translation; object poses from COLMAP
 
+## Checkpoints
 
-
+| Dataset | Sequence Name                        | Checkpoint |
+|---------|--------------------------------------|------------|
+| HO3D    | hold_BB12_ho3d                       |  4d0175b3c |
+| HO3D    | hold_BB13_ho3d                       |  32f545e48 |
+| HO3D    | hold_GSF12_ho3d                      |  db6508d7f |
+| HO3D    | hold_GSF13_ho3d                      |  76fbd4d33 |
+| HO3D    | hold_ABF12_ho3d                      |  81a2bea9a |
+| HO3D    | hold_ABF14_ho3d                      |  20b7fc070 |
+| HO3D    | hold_GPMF12_ho3d                     |  00bc6dc5e |
+| HO3D    | hold_GPMF14_ho3d                     |  64834e9bb |
+| HO3D    | hold_MC1_ho3d                        |  cb20a1702 |
+| HO3D    | hold_MC4_ho3d                        |  c8d39e1aa |
+| HO3D    | hold_MDF12_ho3d                      |  fd873a597 |
+| HO3D    | hold_MDF14_ho3d                      |  28ab63ba1 |
+| HO3D    | hold_ShSu10_ho3d                     |  c2316a5be |
+| HO3D    | hold_ShSu12_ho3d                     |  14680ffbf |
+| HO3D    | hold_SM2_ho3d                        |  d1281c169 |
+| HO3D    | hold_SM4_ho3d                        |  b7c26b798 |
+| HO3D    | hold_SMu1_ho3d                       |  6ba784f2d |
+| HO3D    | hold_SMu40_ho3d                      |  524dcb8d4 |
+| HOLD    | hold_bottle1_itw                     |  009c2e923 |
+| HOLD    | hold_bottle2_itw                     |  16d067709 |
+| HOLD    | hold_kettle1_itw                     |  b76b7f42e |
+| HOLD    | hold_mug1_itw                        |  5f1656837 |
+| HOLD    | hold_rubricube1_itw                  |  91d2cd532 |
+| HOLD    | hold_rubricube2_itw                  |  6abf1a5ae |
+| HOLD    | hold_toycar1_itw                     |  2f71e5d77 |
+| HOLD    | hold_toycar2_itw                     |  5fdcfc03f |
+| ARCTIC  | arctic_s03_box_grab_01_1             | 5c224a94e  |
+| ARCTIC  | arctic_s03_mixer_grab_01_1           | f44e4bf8f  |
+| ARCTIC  | arctic_s03_capsulemachine_grab_01_1  | 09c728594  |
+| ARCTIC  | arctic_s03_espressomachine_grab_01_1 | 0cc49e42c  |
+| ARCTIC  | arctic_s03_ketchup_grab_01_1         | 8239a3dcb  |
+| ARCTIC  | arctic_s03_laptop_grab_01_1          | a961b659b  |
+| ARCTIC  | arctic_s03_microwave_grab_01_1       | 4052f966a  |
+| ARCTIC  | arctic_s03_notebook_grab_01_1        | cf4b38269  |
+| ARCTIC  | arctic_s03_waffleiron_grab_01_1      | 1c1fe8646  |

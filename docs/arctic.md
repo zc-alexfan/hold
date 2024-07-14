@@ -26,6 +26,9 @@ mkdir -p code/data
 
 mv unpack/arctic_ckpts/* code/logs/
 mv unpack/arctic_data/* code/data/
+
+find downloads -delete # clean up
+
 cd code
 ```
 

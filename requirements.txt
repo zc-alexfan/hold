@@ -19,3 +19,4 @@ scipy
 scikit-learn
 tqdm
 trimesh
+omegaconf

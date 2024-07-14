@@ -97,10 +97,11 @@ python setup.py build_ext --inplace
 cd ..
 
 # --- smplx (custom)
+cd submodules
 git clone https://github.com/zc-alexfan/smplx.git
 cd smplx
 python setup.py install
-cd ..
+cd ../..
 
 # -- override non-compatible packages
 pip install setuptools==59.5.0

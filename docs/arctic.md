@@ -5,33 +5,13 @@
 What you will find in this document:
 
 - A HOLD baseline for two-hand manipulation settings.
-    - Use 9 videos from ARCTIC dataset's rigid object collection (used for HANDS2024 competition).
-    - One video per object, excluding small objects like scissors and phones.
-    - Videos sourced from the test set.
+    - Nine preprocessed clips from ARCTIC dataset's rigid object collection (used for HANDS2024 competition).
+    - One clip per object, excluding small objects like scissors and phones.
+    - Clips sourced from the test set.
 - Instructions to reproduce our HOLD baseline.
-- Code to evaluate on our ARCTIC test set as well as a custom evaluation set.
+- Instructions to evaluate on ARCTIC.
 
 > IMPORTANT⚠️: If you're participating in our HANDS2024 challenge, sign up on the workshop website to join our mailing list, as all important information will be communicated through it.
-
-<!-- Assuming that you learned how to train, visualize, and preprocess a custom single-hand sequence, to get started on this bimanual task, we suggest the following steps:
-
-1. Download our preprocessed ARCTIC clips to train a model per sequence (see below)
-1. (Unavailable yet) Upload your prediction (the `arctic_preds.zip` file) to our leaderboard to reproduce the results:
-
-```bash
-cat /tmp/tmpx3qzcyz9/avg_results.json
-{	'cd_h': 109.34839048857026, 
-	'cd_icp': 2.100823341816449, 
-	'cd_l': 102.9745147216744, 
-	'cd_r': 115.72226625546607, 
-	'f10_icp': 65.87858542756224, 
-	'f5_icp': 41.574190964361314, 
-	'mpjpe_ra_h': 25.872253841824, 
-	'mpjpe_ra_l': 27.116696039835613, 
-	'mpjpe_ra_r': 24.627809312608505, 
-	'timestamp': '07-13 17:38'}
-``` -->
-
 
 
 ## Training using our preprocessed sequences
@@ -40,7 +20,7 @@ Here we have preprocessed ARCTIC clips for you to get started. You can download 
 
 ```bash
 ./bash/arctic_downloads.sh
-python scripts/unzip_download.py
+pyhold scripts/unzip_download.py
 mkdir -p code/logs
 mkdir -p code/data
 
@@ -51,13 +31,13 @@ cd code
 
 This should put the pre-trained HOLD models under `./code/logs` and the ARCTIC clips using `./code/data`.
 
-To visualize pre-trained checkpoints (for example, our baseline run `5c224a94e`), you can use our visualization script:
+To visualize pre-trained checkpoints (for example, our baseline, run `5c224a94e`), you can use our visualization script:
 
 ```bash
-python visualize_ckpt.py --ckpt_p logs/5c224a94e/checkpoints/last.ckpt --ours
+pyhold visualize_ckpt.py --ckpt_p logs/5c224a94e/checkpoints/last.ckpt --ours
 ```
 
-To train HOLD on an ARCTIC sequence, following HOLD's full pipeline (pre-train, pose refinement, fully-train), you can use the following:
+To train HOLD on a preprocessed sequence, following HOLD's full pipeline (pre-train, pose refinement, fully-train), you can use the following:
 
 ```bash
 pyhold train.py --case $seq_name --num_epoch 100 --shape_init 75268d864 # this yield exp_id 
@@ -69,11 +49,13 @@ See more details on [usage](usage.md).
 
 ## Training using your own preprocessing method
 
-[Here](custom_arctic.md) we show an example of how preprocessing was done. We observed that in general, the higher accuracy of preprocessed hand and object poses are, the better reconstruction quality HOLD has. Therefore, you are encouraged to have your own preprocessing method so long as you use the same set of images from the previous step. You can also follow this to preprocess any custom sequences that are not in the test set (for example, in case you need more examples for publications).
+[Here](custom_arctic.md) we demonstrate an example of how preprocessing was performed. We observed that, in general, higher accuracy in preprocessed hand and object poses leads to better reconstruction quality in HOLD. Therefore, you are encouraged to use your own preprocessing method as long as you use the same set of images from the previous step. You can also follow this guide to preprocess any custom sequences that are not in the test set (for example, if you need more examples for publications).
 
 ## Evaluation on ARCTIC
 
 ### Online evaluation (ARCTIC test set)
+
+> WARNING: The evaluation server is under construction. You can rely on either qualitative assessment (e.g., with `visualize_ckpt.py`) or a custom validation set (see next section) for now.
 
 Since ARCTIC test set is hidden, you cannot find subject 3 ground-truth annotations here. To evaluate on subject 3, you can submit `arctic_preds.zip` to our [evaluation server](https://arctic-leaderboard.is.tuebingen.mpg.de/) following the submission instructions below. 
 
@@ -126,12 +108,10 @@ First, download the ARCTIC dataset following instructions [here](https://github.
 Suppose that you want to evaluate on `s05/box_grab_01`, you can prepare the groundtruth file via:
 
 ```bash
-python scripts_arctic/process_arctic.py --mano_p arctic_data/arctic/raw_seqs/s05/box_grab_01.mano.npy
+pyhold scripts_arctic/process_arctic.py --mano_p arctic_data/arctic/raw_seqs/s05/box_grab_01.mano.npy
 ```
 
-Modify the sequence to evaluate on in `evaluate_on_arctic.py`:
-
-As an example, this shows to evaluate on subject 5 with sequence name `box_grab_01` for the view `1`:
+In `evaluate_on_arctic.py`, you can specify the sequences to be evaluated on. As an example, this shows to evaluate on `arctic_s05_box_grab_01_1` (subject 5 with sequence name `box_grab_01` for the view `1`) as well as `arctic_s05_waffleiron_grab_01_1`:
 
 ```python
 test_seqs = [
@@ -140,8 +120,8 @@ test_seqs = [
 ]
 ```
 
-Run the evaluate with: 
+After you save the model predictions to `arctic_preds.zip` (see above) for all sequences. Run the evaluate with: 
 
 ```bash
-python evaluate_on_arctic.py --zip_p ./arctic_preds.zip --output results
+pyhold evaluate_on_arctic.py --zip_p ./arctic_preds.zip --output results
 ```

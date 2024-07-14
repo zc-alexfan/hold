@@ -50,7 +50,7 @@ args.log_every = 1
 Each experiment is tracked with a 9-character ID. When the training procedure starts, a random ID (e.g., `837e1e5b2`) is assigned to the experiment and a folder (e.g., `logs/837e1e5b2`) to save information on this folder.
 
 
-## Checkpoint viewer
+## Visualization: Checkpoint viewer
 
 Given a checkpoint from the previous training, you can visualize the results with our checkpoint visualizer that is built with the [very-advanced AIT viewer](https://github.com/eth-ait/aitviewer). In particular, run this command:
 
@@ -86,7 +86,7 @@ The `Training` section above only to document how to use the `train.py` script. 
 
 ```bash
 seq_name=hold_MC1_ho3d
-pyhold train.py --case $seq_name --num_epoch 100 --shape_init 5c09be8ac # this yield exp_id <---------------HERE
+pyhold train.py --case $seq_name --num_epoch 100 --shape_init 5c09be8ac # this yield exp_id
 pyhold optimize_ckpt.py --write_gif --batch_size 51 --iters 300  --ckpt_p logs/$exp_id/checkpoints/last.ckpt
 pyhold train.py --case $seq_name --num_epoch 200 --load_pose logs/$exp_id/checkpoints/last.pose_ref --shape_init 5c09be8ac # this yield another exp_id
 ```

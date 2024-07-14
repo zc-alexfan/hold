@@ -1,12 +1,38 @@
-# ARCTIC benchmark using HOLD (WIP!!!)
+# Bimanual category-agnostic reconstruction (WIP!!)
 
-Humans interact with various objects daily, making holistic 3D capture of these interactions crucial for modeling human behavior. Most methods for reconstructing hand-object interactions require pre-scanned 3D object templates, which are impractical in real-world scenarios. Recently, HOLD (Fan et al. CVPR'24) has shown promise in category-agnostic hand-object reconstruction but is limited to single-hand interaction.
+**Motivation**: Humans interact with various objects daily, making holistic 3D capture of these interactions crucial for modeling human behavior. Recently, HOLD has shown promise in category-agnostic hand-object reconstruction but is limited to single-hand interaction. To address the natural use of both hands, we introduce the **bimanual category-agnostic reconstruction** task, where participants must reconstruct both hands and the object in 3D from a video clip without relying on pre-scanned templates. This task is more challenging due to severe hand-object occlusion and dynamic hand-object contact in bimanual manipulation. 
 
-Since we naturally interact with both hands, we host the bimanual category-agnostic reconstruction task where participants must reconstruct both hands and the object in 3D from a video clip, without relying on pre-scanned templates. This task is more challenging as bimanual manipulation exhibits severe hand-object occlusion and dynamic hand-object contact, leaving rooms for future development.
+What you will find in this document:
 
-To benchmark this challenge, we adapt HOLD to two-hand manipulation settings and use 9 videos from ARCTIC dataset's rigid object collection, one per object (excluding small objects such as scissors and phone), and sourced from the test set for this challenge. Here we provide instructions to reproduce our HOLD baseline, and to produce data to upload to our evaluation server for test set evaluation.
+- A HOLD baseline for two-hand manipulation settings.
+    - Use 9 videos from ARCTIC dataset's rigid object collection (used for HANDS2024 competition).
+    - One video per object, excluding small objects like scissors and phones.
+    - Videos sourced from the test set.
+- Instructions to reproduce our HOLD baseline.
+- Code to evaluate on our ARCTIC test set as well as a custom evaluation set.
 
-> IMPORTANT⚠️: If you are participating in our HANDS2024 challenge, make sure that you've signed up the form on the workshop website to join our mailing list. All important information will be communicated through this mailing list.
+> IMPORTANT⚠️: If you're participating in our HANDS2024 challenge, sign up on the workshop website to join our mailing list, as all important information will be communicated through it.
+
+<!-- Assuming that you learned how to train, visualize, and preprocess a custom single-hand sequence, to get started on this bimanual task, we suggest the following steps:
+
+1. Download our preprocessed ARCTIC clips to train a model per sequence (see below)
+1. (Unavailable yet) Upload your prediction (the `arctic_preds.zip` file) to our leaderboard to reproduce the results:
+
+```bash
+cat /tmp/tmpx3qzcyz9/avg_results.json
+{	'cd_h': 109.34839048857026, 
+	'cd_icp': 2.100823341816449, 
+	'cd_l': 102.9745147216744, 
+	'cd_r': 115.72226625546607, 
+	'f10_icp': 65.87858542756224, 
+	'f5_icp': 41.574190964361314, 
+	'mpjpe_ra_h': 25.872253841824, 
+	'mpjpe_ra_l': 27.116696039835613, 
+	'mpjpe_ra_r': 24.627809312608505, 
+	'timestamp': '07-13 17:38'}
+``` -->
+
+
 
 ## Training using our preprocessed sequences
 

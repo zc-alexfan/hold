@@ -66,6 +66,14 @@ HOLD can reconstruct 3D geometries of novel objects and hands:
 - [ ] Clean the code further
 - [ ] Support arctic for two-hand + rigid object setting
 
+### Documentation
+
+- Setup environment and downloads: see [`docs/setup.md`](docs/setup.md)
+- Training, evaluation, and visualization on preprocessed sequences: see [`docs/usage.md`](docs/usage.md)
+- Preprocess custom sequences: see [`docs/custom.md`](docs/custom.md)
+- Data documentation: see [`docs/data_doc.md`](docs/data_doc.md)
+- Instructions for using HOLD on ARCTIC: see [`docs/arctic.md`](docs/arctic.md) (in progress!!)
+
 ### Getting started
 
 Get a copy of the code:
@@ -75,11 +83,23 @@ git clone https://github.com/zc-alexfan/hold.git
 cd hold; git submodule update --init --recursive
 ```
 
-- Setup environment and downloads: see [`docs/setup.md`](docs/setup.md)
-- Training, evaluation, and visualization on preprocessed sequences: see [`docs/usage.md`](docs/usage.md)
-- Preprocess custom sequences: see [`docs/custom.md`](docs/custom.md)
-- Data documentation: see [`docs/data_doc.md`](docs/data_doc.md)
-- Instructions for using HOLD on ARCTIC and HANDS2024 competition: see [`docs/arctic.md`](docs/arctic.md) (in progress!!)
+1. **Train on a Preprocessed Sequence**
+   - Start with one of our preprocessed in-the-wild sequences, such as `hold_bottle1_itw`.
+   - Familiarize yourself with the usage guidelines in [`docs/usage.md`](docs/usage.md) for this preprocessed sequence.
+   - This will enable you to train, render HOLD, and experiment with our interactive viewer.
+   - At this stage, you can also explore the HOLD code in the `./code` directory.
+
+2. **Set Up External Dependencies and Preprocess Images**
+   - After understanding the initial tools, set up the "external dependencies" as outlined in [`docs/setup.md`](docs/setup.md).
+   - Preprocess the images from the `hold_bottle1_itw` sequence by following the instructions in [`docs/custom.md`](docs/custom.md).
+   - Train on this sequence to learn how to build a custom dataset.
+   - You can capture your own custom video and reconstruct it in 3D at this point.
+   - Most preprocessing artifact files are documented in [`docs/data_doc.md`](docs/data_doc.md), which you can use as a reference.
+
+3. **Two-hand setting**: Bimanual category-agnostic reconstruction
+    - At this point, you can preprocess and train on a custom single-hand sequence. 
+    - Now you can take on the bimanual category-agnostic reconstruction challenge!
+    - Following the instruction in [`docs/arctic.md`](docs/arctic.md) to reconstruct two-hand manipulation of ARCTIC sequences.
 
 ### Official Citation 
 

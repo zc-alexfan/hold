@@ -1,1 +1,26 @@
+# file types
+*.ply
+*.npz
+*.npy
+*.cpp
+*.pkl
+*.obj
+*.ipynb
+*.so
+*.png
+*.jpg
+*.pt
+*.mp4
+*.bin
+*.db
+*.ckpt
+*.zip
+
+
+# cache
 .DS_Store
+/downloads
+/unpack/
+.vscode/
+__pycache__/
+

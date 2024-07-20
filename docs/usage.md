@@ -52,7 +52,13 @@ Each experiment is tracked with a 9-character ID. When the training procedure st
 
 ## Visualization: Checkpoint viewer
 
-Given a checkpoint from the previous training, you can visualize the results with our checkpoint visualizer that is built with the [very-advanced AIT viewer](https://github.com/eth-ait/aitviewer). In particular, run this command:
+Given a checkpoint from the previous training, you can visualize the results with our checkpoint visualizer that is built with the [very-advanced AIT viewer](https://github.com/eth-ait/aitviewer). 
+
+<p align="center">
+    <img src="./static/aitviewer.gif" alt="Image" width="80%"/>
+</p>
+
+In particular, run this command:
 
 ```bash
 exp_id=cb20a1702 # replace with any experiment id

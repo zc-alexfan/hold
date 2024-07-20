@@ -47,7 +47,7 @@ args.tempo_len = 50
 args.log_every = 1
 ```
 
-Each experiment is tracked with a 9-character ID. When the training procedure starts, a random ID (e.g., `837e1e5b2`) is assigned to the experiment and a folder (e.g., `logs/837e1e5b2`) to save information on this folder.
+Each experiment is tracked with a 9-character ID. When the training procedure starts, a random ID (e.g., `837e1e5b2`) is assigned to the experiment and a folder (e.g., `logs/837e1e5b2`) to save information on this folder. 
 
 
 ## Visualization: Checkpoint viewer
@@ -69,12 +69,15 @@ You can also visualize the groundtruth:
 
 ```bash
 seq_name=hold_MC1_ho3d # folder name in ./data/; this is required for GT viewing
+exp_id=cb20a1702
 pyait visualize_ckpt.py --ckpt_p logs/$exp_id/checkpoints/last.ckpt --gt_ho3d --seq_name $seq_name
 ```
 
 Or both:
 
 ```bash
+seq_name=hold_MC1_ho3d # folder name in ./data/; this is required for GT viewing
+exp_id=cb20a1702
 pyait visualize_ckpt.py --ckpt_p logs/$exp_id/checkpoints/last.ckpt --gt_ho3d --ours --seq_name $seq_name
 ```
 
@@ -85,6 +88,9 @@ pyait visualize_ckpt.py --ckpt_p logs/$exp_id/checkpoints/last.ckpt --gt_ho3d --
 - To go between the previous and the current frame, press `<` and `>`.
 
 More documentation can be found in [aitviewer github](https://github.com/eth-ait/aitviewer) and in [viewer docs](https://eth-ait.github.io/aitviewer/frontend.html).
+
+
+We provided the pre-trained models in our CVPR papers. Their experiment hashcode and the sequence name pairs can be found in [`docs/data_doc.md`](data_doc.md).
 
 ## Full HOLD pipeline
 

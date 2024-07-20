@@ -51,7 +51,7 @@ def validate_mask(seq_name):
         assert len(right_mask_ps) == len(object_mask_ps)
 
     # rgb image with only object pixels
-    rgb_ps = sorted(glob(f"./data/{seq_name}/images/*.jpg"))
+    rgb_ps = sorted(glob(f"./data/{seq_name}/images/*"))
     object_mask_ps = sorted(
         glob(f"./data/{seq_name}/processed/sam/object/masks_processed/*.png")
     )

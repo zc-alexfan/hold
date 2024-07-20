@@ -24,3 +24,10 @@
 .vscode/
 __pycache__/
 
+code/body_models/
+code/build/
+code/data/
+code/imgui.ini
+code/logs/
+code/saved_models/
+generator/data

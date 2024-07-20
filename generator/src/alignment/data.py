@@ -12,7 +12,7 @@ from src.hand_pose.slerp import slerp_xyz
 
 def read_data(seq_name, K):
     # load data
-    im_ps = sorted(glob(f"./data/{seq_name}/images/*.jpg"))
+    im_ps = sorted(glob(f"./data/{seq_name}/images/*"))
     j2d_p = f"./data/{seq_name}/processed/j2d.full.npy"
     colmap_pts = trimesh.load(
         f"./data/{seq_name}/processed/colmap/sparse_points_normalized.obj",

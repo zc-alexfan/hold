@@ -224,7 +224,7 @@ def format_poses(seq_name):
     assert len(valid_frames) == len(o2w_all)
     assert valid_frames.min() > 0  ## assume 1-based in valid frames
     key_frames = valid_frames - 1
-    num_frames = len(glob(f"./data/{seq_name}/images/*.jpg"))
+    num_frames = len(glob(f"./data/{seq_name}/images/*"))
 
     sort_idx = np.argsort(key_frames)
     key_frames = key_frames[sort_idx]

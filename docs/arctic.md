@@ -48,8 +48,6 @@ pyhold optimize_ckpt.py --write_gif --batch_size 51 --iters 600  --ckpt_p logs/$
 pyhold train.py --case $seq_name --num_epoch 200 --load_pose logs/$exp_id/checkpoints/last.pose_ref --shape_init 75268d864 # this yield another exp_id
 ```
 
-<<-------------------dry run until here.
-
 See more details on [usage](usage.md).
 
 ## Training using your own preprocessing method

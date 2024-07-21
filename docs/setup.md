@@ -210,11 +210,11 @@ cd ..
 conda activate hloc
 bash ./install/hloc.sh 
 
-# -- hand_detector.d2 (optional; if right hand)
+# -- hand_detector.d2 (right-hand only)
 conda activate 100doh
 bash ./install/100doh.sh 
 
-# -- MeshTransformer (optional; if right hand)
+# -- MeshTransformer (right-hand only)
 conda activate metro
 bash ./install/metro.sh 
 ```

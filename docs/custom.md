@@ -17,24 +17,48 @@ Overall, the preprocessing pipeline is as follows:
 
 This is the same for single-hand and two-hand cases. This preprocessing pipeline yields different artifacts. The created files and folders are explained in the [data documentation page](data_doc.md).
 
-## Create dataset
 
-Given a new sequence called `hold_grape_0404`, we first create a folder for it, copy it to the folder, and parse its frames:
+
+## Dataset folder
+
+Lets use this sequence `hold_bottle1_itw` as an example. First, we create a copy of the input images:
 
 ```bash
 cdroot
-seq_name=hold_grape_0404
+seq_name=hold_bottle1_example
+mkdir -p data/$seq_name
+cp -r data/hold_bottle1_itw/build/image data/$seq_name/images
+cd data/$seq_name
+zip -r images.zip images
+cd ../..
+mkdir -p ./data/$seq_name/processed/sam/object
+mkdir -p ./data/$seq_name/processed/sam/right
+mkdir -p ./data/$seq_name/processed/sam/left
+```
+
+We will be using images from this folder `hold_bottle1_example`: 
+
+```bash
+find data/hold_bottle1_example/ -maxdepth 1
+data/hold_bottle1_example/
+data/hold_bottle1_example/images.zip
+data/hold_bottle1_example/processed
+data/hold_bottle1_example/images
+```
+
+
+(Optional) If you want to create this folder struture from a video instead, you can run: 
+
+```bash
+cdroot
+seq_name=hold_bottle1_itw
 mkdir -p ./data/$seq_name
 cp my/video/path/video.mp4 ./data/$seq_name/video.mp4
-```
-
-Extract images from video: 
-
-```
 python scripts/init_dataset.py --video_path ./data/$seq_name/video.mp4 --skip_every 2 # extract every 2 frames
 ```
 
-The option `--skip_every` allows you to downsample frames if the video is too long.
+However, we strongly encourage to use the `hold_bottle1_example` to get started.
+
 
 ## Segmentation
 
@@ -57,13 +81,7 @@ Label the object:
 - Select `Click` and `Positive` to label the object.
 - Select `Click` and `Negative` to label region to avoid. 
 - Click `Start Tracking`
-- After the tracking is complete, you can copy the files under `./generator/Segment-and-Track-Anything/tracking_results/images/*` to the desination path (see below).
-
-The destination path has been created when you parsed the video:
-
-```bash
-./data/$seq_name/processed/sam/object
-```
+- After the tracking is complete, you can copy the files under `./generator/Segment-and-Track-Anything/tracking_results/images/*` to the desination path unde `./data/$seq_name/processed/sam/*`.
 
 After copying the segmentation files, we expect file structure like this:
 
@@ -81,7 +99,7 @@ cdroot; pyhold scripts/validate_masks.py --seq_name $seq_name
 ## Hand pose estimation
 
 
-### Using METRO hand tracker (CVPR paper method)
+### Using METRO hand tracker (right-hand only; CVPR paper method)
 
 We used METRO in our CVPR paper. The METRO pipeline only support a single right hand. In details, we first use 100DoH detector to find hand bounding boxes:
 
@@ -101,18 +119,9 @@ Since METRO is non-parametric, we need to register MANO model to it. Then we rep
 
 ```bash
 cdroot
-pyhold scripts/register_mano.py --seq_name $seq_name --save_mesh
+pyhold scripts/register_mano.py --seq_name $seq_name --save_mesh --use_beta_loss # in CVPR, we didn't use --use_beta_loss, but we found it converges faster.
 pyhold scripts/validate_metro.py --seq_name $seq_name
 ```
-
-## Object pose estimation
-
-Run HLoc to obtain object pose and point cloud:
-
-```bash
-cdroot; pycolmap scripts/colmap_estimation.py --num_pairs 40 --seq_name $seq_name
-```
-
 
 ### Using HAMER hand tracker (two-handed case)
 
@@ -128,7 +137,7 @@ Register MANO model to predicted meshes:
 
 ```bash
 cdroot
-pyhold scripts/register_mano.py --seq_name $seq_name --save_mesh #--hand_type right --use_beta_loss
+pyhold scripts/register_mano.py --seq_name $seq_name --save_mesh --use_beta_loss #--hand_type right
 ```
 
 Note: If your video has only 1 hand, you can use `--hand_type right` or `--hand_type left` to register the corresponding hand; If not specified, this option will default to registering left and right hands. The rest of the code will behave differently based on the number of hand types registered in this step. The flag `--use_beta_loss` encourages the hand shape to be near zero and often has faster convergence.
@@ -137,6 +146,14 @@ After registeration, run this to linearly interpolate missing frames:
 
 ```bash
 pyhold scripts/validate_hamer.py --seq_name $seq_name
+```
+
+## Object pose estimation
+
+Run HLoc to obtain object pose and point cloud:
+
+```bash
+cdroot; pycolmap scripts/colmap_estimation.py --num_pairs 40 --seq_name $seq_name
 ```
 
 ## Hand-object alignment
@@ -166,10 +183,19 @@ Warning⚠️: This visualization is usually the final step for quality assuranc
 Finally, we have all the artifacts needed. We can compile them into a dataset: 
 
 ```bash
-cdroot; pyhold scripts/build_dataset.py --seq_name $seq_name
+cdroot; pyhold scripts/build_dataset.py --seq_name $seq_name --rebuild --no_fixed_shift
 ```
 
 This "compilation" creates a "build" of the dataset under `./data/$seq_name/build/`. Files within "build" is all you need for HOLD to train. It also packs all needed data into a zip file, which you can transfer to your remote cluster to train HOLD on.
+
+## Start training
+
+Now you can start the training process:
+
+```bash
+python train.py --case $seq_name --num_epoch 100 --shape_init 5c09be8ac
+```
+
 
 ## Tips for good quality capture
 

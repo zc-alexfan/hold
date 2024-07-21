@@ -1,13 +1,11 @@
 import os.path as op
 from glob import glob
 
-import common.viewer as viewer_utils
 import numpy as np
 import torch
 import trimesh
 from common.body_models import build_mano_aa
 from common.transforms import project2d_batch, rigid_tf_torch_batch
-from common.viewer import ViewerData
 from PIL import Image
 
 # from src_data.preprocessing_utils import tf.cv2gl_mano
@@ -164,6 +162,7 @@ def load_viewer_data(args):
         "flat_shading": False,
     }
 
+    import common.viewer as viewer_utils
     meshes = viewer_utils.construct_viewer_meshes(
         vis_dict, draw_edges=False, flat_shading=False
     )
@@ -176,5 +175,6 @@ def load_viewer_data(args):
     cols, rows = im.size
 
     images = [Image.open(im_p) for im_p in fnames]
+    from common.viewer import ViewerData
     data = ViewerData(Rt, K, cols, rows, images)
     return meshes, data

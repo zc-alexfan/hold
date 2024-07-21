@@ -9,7 +9,7 @@ import os.path as op
 from tqdm import tqdm
 import sys
 sys.path = [".", '..'] + sys.path
-import src.utils.gt_arctic as gt
+import src.utils.io.gt_arctic as gt
 import src.utils.eval_modules_arctic as eval_m
 
 eval_fn_dict = {
@@ -83,7 +83,7 @@ def eval_seq(pred_p, output_dir):
 
 # sequences to evaluate
 test_seqs = [
-    'arctic_s05_box_grab_01_1'
+    'arctic_s05_espressomachine_grab_01_8'
 ]
 
 

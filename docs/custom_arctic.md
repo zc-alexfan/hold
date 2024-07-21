@@ -38,7 +38,7 @@ If you downloaded HOLD data using our scripts, you can find the clip `arctic_s05
 If you want to crop the images with a bounding box, you can use this script:
 
 ```bash
-python scripts_arctic/crop_arctic_videos.py --input_dir ./data/arctic_laptop_grab_01_6/images
+python scripts_arctic/crop_arctic_videos.py --input_dir ./data/arctic_s05_espressomachine_grab_01_8/images
 ```
 
 You will be prompted with a window to draw bounding box to crop and press `c` in the keyboard to crop the video.

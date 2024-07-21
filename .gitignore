@@ -31,3 +31,5 @@ code/imgui.ini
 code/logs/
 code/saved_models/
 generator/data
+
+imgui.ini

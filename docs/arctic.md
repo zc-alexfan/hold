@@ -126,5 +126,5 @@ test_seqs = [
 After you save the model predictions to `arctic_preds.zip` (see above) for all sequences. Run the evaluate with: 
 
 ```bash
-pyhold evaluate_on_arctic.py --zip_p ./arctic_preds.zip --output results
+pyhold scripts_arctic/evaluate_on_arctic.py --zip_p ./arctic_preds.zip --output results
 ```

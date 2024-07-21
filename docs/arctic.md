@@ -96,7 +96,7 @@ Submit this zip file to our [leaderboard](https://arctic-leaderboard.is.tuebinge
 
 Suppose that you want to evaluate offline on sequences that are not in the test set. For example, you may need more sequence evaluation for a paper or you may want to analyze your method quantitatively in details. In that case, you need to prepare ARCTIC groundtruth for your sequence of interest. 
 
-First, download the ARCTIC dataset following instructions [here](https://github.com/zc-alexfan/arctic). Place the arctic data with this folder structure:
+First, download the ARCTIC dataset following instructions [here](https://github.com/zc-alexfan/arctic). Place the arctic data with this folder structure (smplx npz can be downloaded [here](https://smpl-x.is.tue.mpg.de/)):
 
 ```bash
 ./ # code folder

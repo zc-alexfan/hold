@@ -64,7 +64,7 @@ HOLD can reconstruct 3D geometries of novel objects and hands:
 
 - [ ] Tips on good reconstruction
 - [ ] Clean the code further
-- [ ] Support arctic for two-hand + rigid object setting
+- [X] Support arctic for two-hand + rigid object setting
 
 ### Documentation
 

@@ -1,4 +1,4 @@
-# Bimanual category-agnostic reconstruction (WIP!!)
+# Bimanual category-agnostic reconstruction
 
 **Motivation**: Humans interact with various objects daily, making holistic 3D capture of these interactions crucial for modeling human behavior. Recently, HOLD has shown promise in category-agnostic hand-object reconstruction but is limited to single-hand interaction. To address the natural use of both hands, we introduce the **bimanual category-agnostic reconstruction** task, where participants must reconstruct both hands and the object in 3D from a video clip without relying on pre-scanned templates. This task is more challenging due to severe hand-object occlusion and dynamic hand-object contact in bimanual manipulation. 
 

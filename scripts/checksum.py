@@ -9,38 +9,31 @@ from tqdm import tqdm
 
 def main():
     release_folder = "./downloads"
-
-    print("Globing files...")
-    fnames = glob(op.join(release_folder, "**/*"), recursive=True)
-    print("Number of files to checksum: ", len(fnames))
-    pbar = tqdm(fnames)
-
+    
     with open("./bash/assets/checksum.json", "r") as f:
         gt_checksum = json.load(f)
-
+    
+    keys = list(gt_checksum.keys())
+    fnames = [op.join(release_folder, key) for key in keys]
+    print("Number of files to checksum: ", len(fnames))
+    pbar = tqdm(fnames)
+    
     hash_dict = {}
-    for fname in pbar:
-        if op.isdir(fname):
-            continue
-        if ".zip" not in fname:
-            continue
-        if "models_smplx_v1_1.zip" in fname:
-            continue
-        if "mano_v1_2.zip" in fname:
-            continue
-
+    for key in pbar:
         try:
+            fname = op.join(release_folder, key[1:])
+            if not op.exists(fname):
+                continue
             with open(fname, "rb") as f:
                 pbar.set_description(f"Reading {fname}")
                 data = f.read()
                 hashcode = sha256(data).hexdigest()
-                key = fname.replace(release_folder, "")
                 hash_dict[key] = hashcode
+                
                 if hashcode != gt_checksum[key]:
                     print(f"Error: {fname} has different checksum!")
                 else:
                     pbar.set_description(f"Hashcode of {fname} is correct!")
-                    # print(f'Hashcode of {fname} is correct!')
         except:
             print(f"Error processing {fname}")
             traceback.print_exc()

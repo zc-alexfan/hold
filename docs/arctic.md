@@ -98,6 +98,22 @@ After the step above, you'll reach a page to upload prediction results. Choose u
 
 To avoid excessive hyperparameter tuning on the test set, each account can only submit to the server for 10 successful evaluations in total every month. For the ECCV24 competition, we allow more attempts and please email `zicong.fan@inf.ethz.ch` if you ran out of attempts.
 
+
+
+**Documentation for pt files in arctic_preds.zip**: Suppose that NUM_IMAGES is the number of images in each clip and you performed marching cube to obtain object template with NUM_VERTS_OBJECT vertices.
+
+- `fnames`: a list of image paths for the clip, for example, `./data/arctic_s03_box_grab_01_1/build/image/0000.png`; Shape: `NUM_IMAGES`
+- `full_seq_name`: sequence name, for example, `arctic_s03_box_grab_01_1` 
+- `j3d_ra.right`: predicted right hand 3D joint position (in meters) after subtracted by its root; Shape: `torch.Size([NUM_IMAGES, 21, 3])`
+- `j3d_ra.left`: predicted left hand 3D joint position (in meters) after subtracted by its root; Shape: `torch.Size([NUM_IMAGES, 21, 3])`
+- `v3d_right.object`: predicted object vertices in camera coordinate (meters) after subtracted by right hand root; Shape: `torch.Size([NUM_IMAGES, NUM_VERTS_OBJECT, 3])`
+- `v3d_left.object`: predicted object vertices in camera coordinate (meters) after subtracted by left hand root; Shape: `torch.Size([NUM_IMAGES, NUM_VERTS_OBJECT, 3])`
+- `v3d_c.left`: predicted left hand vertices in camera coordinate (meters); Shape: `torch.Size([NUM_IMAGES, 778, 3])`
+- `v3d_c.right`: predicted right hand vertices in camera coordinate (meters); Shape: `torch.Size([NUM_IMAGES, 778, 3])`
+- `v3d_c.object`: predicted object vertices in camera coordinate (meters); Shape: `torch.Size([NUM_IMAGES, NUM_VERTS_OBJECT, 3])`
+- `j3d_c.left`: predicted left hand 3D joint position in camera coordinate (in meters) after subtracted by its root; Shape: `torch.Size([NUM_IMAGES, 21, 3])`
+- `j3d_c.right`: predicted right hand 3D joint position in camera coordinate (in meters) after subtracted by its root; Shape: `torch.Size([NUM_IMAGES, 21, 3])`
+
 ### Offline evaluation on non-test-set seqs
 
 Suppose that you want to evaluate offline on sequences that are not in the test set. For example, you may need more sequence evaluation for a paper or you may want to analyze your method quantitatively in details. In that case, you need to prepare ARCTIC groundtruth for your sequence of interest. 

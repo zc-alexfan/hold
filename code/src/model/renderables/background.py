@@ -115,7 +115,7 @@ class Background(nn.Module):
         p_mid_norm = torch.norm(p_mid, dim=-1)
 
         rot_axis = torch.cross(ray_o, p_sphere, dim=-1)
-        rot_axis = rot_axis / torch.norm(rot_axis, dim=-1, keepdim=True)
+        rot_axis = rot_axis / (torch.norm(rot_axis, dim=-1, keepdim=True)+1e-8)
         phi = torch.asin(p_mid_norm / self.sdf_bounding_sphere)
         theta = torch.asin(p_mid_norm * depth)  # depth is inside [0, 1]
         rot_angle = (phi - theta).unsqueeze(-1)  # [..., 1]

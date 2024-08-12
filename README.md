@@ -58,8 +58,6 @@ HOLD can reconstruct 3D geometries of novel objects and hands:
 - A viewer to interact with the prediction
 - Code to evaluate and compare with HOLD in HO3D
 
-> WARNING ⚠️: If you are participating the ECCV challenge, the ARCTIC code and datasets may subjec to change as they are in development. However, feel free to familiarize yourself with the HOLD code and its preprocessing pipeline in general.
-
 ### TODOs
 
 - [ ] Tips on good reconstruction

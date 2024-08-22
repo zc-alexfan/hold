@@ -100,6 +100,7 @@ cd ..
 cd submodules
 git clone https://github.com/zc-alexfan/smplx.git
 cd smplx
+git checkout 6675c3da8
 python setup.py install
 cd ../..
 

@@ -11,7 +11,7 @@ What you will find in this document:
 - Instructions to reproduce our HOLD baseline.
 - Instructions to evaluate on ARCTIC.
 
-> IMPORTANT⚠️: If you're participating in our HANDS2024 challenge, sign up on the workshop website to join our mailing list, as all important information will be communicated through it.
+> IMPORTANT⚠️: If you're participating in our HANDS2025 challenge, sign up on the workshop website to join our mailing list, as all important information will be communicated through it.
 
 
 ## Training using our preprocessed sequences

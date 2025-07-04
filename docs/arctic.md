@@ -5,7 +5,7 @@
 What you will find in this document:
 
 - A HOLD baseline for two-hand manipulation settings.
-    - Nine preprocessed clips from ARCTIC dataset's rigid object collection (used for HANDS2024 competition).
+    - Nine preprocessed clips from ARCTIC dataset's rigid object collection (used for HANDS competition).
     - One clip per object, excluding small objects like scissors and phones.
     - Clips sourced from the test set.
 - Instructions to reproduce our HOLD baseline.
@@ -88,7 +88,7 @@ Finally, package the predictions:
 zip -r arctic_preds.zip arctic_preds
 ```
 
-To submit this zip file to our [leaderboard](https://arctic-leaderboard.is.tuebingen.mpg.de/leaderboard) for online evaluation, create an account with your academic address. **If you participate in the ECCV24 HANDS challenge, you should use the same email used when registering for the challenge.**. Also, this is a seperate account from HOLD. After activating your account, you may now log into the website.
+To submit this zip file to our [leaderboard](https://arctic-leaderboard.is.tuebingen.mpg.de/leaderboard) for online evaluation, create an account with your academic address. **If you participate in the HANDS challenge, you should use the same email used when registering for the challenge.**. Also, this is a seperate account from HOLD. After activating your account, you may now log into the website.
 
 After logging in, click "My algorithms" at the top to manage your algorithms. To add one, click "Add algorithm" and enter your algorithm details, with only the "short name" field being mandatory. This information will appear on the leaderboard if published. Algorithm scores remain private by default unless published. Click save to create the algorithm.
 
@@ -96,7 +96,7 @@ IMPORTANT: When an algorithm is created, you can submit on multiple sub-tasks. Y
 
 After the step above, you'll reach a page to upload prediction results. Choose upload and select the Bi-CAIR (bimanual category-agnostic interaction reconstruction) task for submission. If it is your first attempt, try to submit the `arctic_preds.zip` from our HOLD baseline to the server side works. This should yield to similar numbers as in the leaderboard. Once you tested that this zip file works, you can try with your own `arctic_preds.zip` file. The evaluation time may vary based on the task and number of requests. You'll see the results in a table, which can be downloaded as a JSON file by clicking "evaluation result".
 
-To avoid excessive hyperparameter tuning on the test set, each account can only submit to the server for 10 successful evaluations in total every month. For the ECCV24 competition, we allow more attempts and please email `zicong.fan@inf.ethz.ch` if you ran out of attempts.
+To avoid excessive hyperparameter tuning on the test set, each account can only submit to the server for 10 successful evaluations in total every month. For the HANDS competition, we allow more attempts and please email `zicong.fan@inf.ethz.ch` if you ran out of attempts.
 
 
 

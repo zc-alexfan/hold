@@ -10,7 +10,7 @@
 [ [ArXiv](https://arxiv.org/abs/2311.18448) ]
 [ [Video](https://youtu.be/xm6WSkr2sIs) ]
 [ [HOLD Account](https://hold.is.tue.mpg.de/) ]
-[ [ECCV'24 HOLD+ARCTIC Challenge](https://hands-workshop.org/challenge2024.html) ]
+[ [ICCV'25 HOLD+ARCTIC Challenge](https://hands-workshop.org/challenge2025.html) ]
 
 
 Authors: [Zicong Fan](https://zc-alexfan.github.io/), [Maria Parelli](https://scholar.google.com/citations?user=ipSS2ToAAAAJ&hl=en), [Maria Eleni Kadoglou](https://ch.linkedin.com/in/marialena-kadoglou-337a10226), [Muhammed Kocabas](https://ps.is.mpg.de/person/mkocabas), [Xu Chen](https://xuchen-ethz.github.io/), [Michael J. Black](https://ps.is.mpg.de/person/black), [Otmar Hilliges](https://ait.ethz.ch/people/hilliges)

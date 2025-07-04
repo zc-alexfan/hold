@@ -20,6 +20,7 @@ Authors: [Zicong Fan](https://zc-alexfan.github.io/), [Maria Parelli](https://sc
 
 🚀 Register a HOLD account [here](https://hold.is.tue.mpg.de/register.php) for news such as code release, downloads, and future updates!
 
+- 2025.07.04: Join our [ICCV competition](https://hands-workshop.org/challenge2025.html): Two hand + rigid object using HOLD on ARCTIC!
 - 2024.07.04: Join our [ECCV competition](https://hands-workshop.org/challenge2024.html): Two hand + rigid object using HOLD on ARCTIC!
 - 2024.07.04: HOLD beta is released!
 - 2024.04.04: HOLD is awarded CVPR highlight!

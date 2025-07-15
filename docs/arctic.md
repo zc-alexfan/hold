@@ -13,6 +13,7 @@ What you will find in this document:
 
 > IMPORTANT⚠️: If you're participating in our HANDS challenge, sign up on the workshop website to join our mailing list, as all important information will be communicated through it.
 
+Some users experienced difficulties in using the evaluation server, while I will streamline the submission process in the future, should you encountered issues you can refer to this [link](https://github.com/zc-alexfan/hold/issues/19) where I gathered my responses. 
 
 ## Training using our preprocessed sequences
 

@@ -18,6 +18,13 @@ Authors: [Zicong Fan](https://zc-alexfan.github.io/), [Maria Parelli](https://sc
 
 ### News
 
+
+> ✨3DV 2026: Looking for hand scans data? PALM is a large-scale dataset containing high-quality 13k registered 3dMD hand scans of 263 subjects and 90k calibrated multiview RGB images. See [PALM](https://github.com/facebookresearch/PALM) for details.
+>
+> <p align="center">
+>     <img src="https://github.com/facebookresearch/PALM/blob/main/docs/static/dataset-teaser.jpg" alt="PALM Teaser" width="80%"/> 
+> </p>
+
 🚀 Register a HOLD account [here](https://hold.is.tue.mpg.de/register.php) for news such as code release, downloads, and future updates!
 
 - 2025.07.04: Join our [ICCV competition](https://hands-workshop.org/challenge2025.html): Two hand + rigid object using HOLD on ARCTIC!
@@ -116,12 +123,6 @@ cd hold; git submodule update --init --recursive
 }
 ```
 
-> ✨CVPR 2023: ARCTIC is a dataset that includes accurate body/hand/object poses, multi-view RGB videos for articulated object manipulation. See our [project page](https://github.com/zc-alexfan/arctic) for details.
->
-> <p align="center">
->     <img src="./docs/static/dexterous.gif" alt="ARCTIC demo" width="500"/> <!-- Adjust width as needed -->
-> </p>
->
 
 
 ### Star History

@@ -59,6 +59,9 @@ See more details on [usage](usage.md).
 
 ### Online evaluation (ARCTIC test set)
 
+> ⚠️Tips: First try to upload and evaluate using our example submission file `arctic_preds.zip` ([here](https://drive.google.com/file/d/1qeyRKrf_SGVFOXRVOb4o5G-msuoPn16T/view?usp=sharing)). Then you can overwrite the content in the file for your own results. This guarantee the file is in the right format.
+
+
 Since ARCTIC test set is hidden, you cannot find subject 3 ground-truth annotations here. To evaluate on subject 3, you can submit `arctic_preds.zip` ([here](https://drive.google.com/file/d/1qeyRKrf_SGVFOXRVOb4o5G-msuoPn16T/view?usp=sharing)) to our [evaluation server](https://arctic-leaderboard.is.tuebingen.mpg.de/) following the submission instructions below. 
 
 First, you can export the prediction for each experiment (indicated by `exp_id`) via:

@@ -127,7 +127,7 @@ cd hold; git submodule update --init --recursive
 
 ### Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=zc-alexfan/hold&type=Date)](https://star-history.com/#zc-alexfan/hold&Date)
+[![Star History Chart](https://star-history.dera.page/svg?repos=zc-alexfan/hold&type=Date)](https://star-history.dera.page/#zc-alexfan/hold&Date)
 
 
 ### Contact
